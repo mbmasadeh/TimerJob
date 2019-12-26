@@ -5,10 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Timers\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.1.6" />
     <PackageReference Include="Microsoft.AspNetCore.HttpsPolicy" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.3" />

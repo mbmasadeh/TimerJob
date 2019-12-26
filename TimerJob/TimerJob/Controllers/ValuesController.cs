@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TimerJob.Data;
+using TimerJob.Services;
+using TimerJob.ViewModel;
 
 namespace TimerJob.Controllers
 {
@@ -10,11 +13,21 @@ namespace TimerJob.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly TimerContext _Context;
+        private readonly ServiceManager _service;
+        public ValuesController(TimerContext Context, ServiceManager Service)
+        {
+            _Context = Context;
+            _service = Service;
+        }
+
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<InfoTableViewModel> Get()
         {
-            return new string[] { "value1", "value2" };
+            var service = _service.NewService<InfoService>(_Context);
+            var setRead = service.MoveData();
+            return Ok();
         }
 
         // GET api/values/5

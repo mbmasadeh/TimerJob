@@ -11,8 +11,10 @@ namespace TimerJob.Data
     {
         public TimerContext() : base("LocalSQL")
         {
-            Database.SetInitializer<TimerContext>(null);
+            Database.SetInitializer(new CreateDatabaseIfNotExists<TimerContext>());
         }
+       
         public DbSet<InfoTable> InfoTables { get; set; }
+        public DbSet<NewInfoTable> NewInfoTables { get; set; }
     }
 }

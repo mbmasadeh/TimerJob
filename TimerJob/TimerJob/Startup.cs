@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using TimerJob.Data;
+using TimerJob.Jobs;
 using TimerJob.Services;
 
 namespace TimerJob
@@ -30,6 +31,7 @@ namespace TimerJob
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddScoped(typeof(TimerContext));
             services.AddScoped(typeof(ServiceManager));
+            services.AddHostedService<DataMoveTimerJob>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
